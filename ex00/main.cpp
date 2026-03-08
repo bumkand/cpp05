@@ -40,4 +40,16 @@ int	main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+
+	try
+	{
+		Bureaucrat	d("Didi", 151);
+		std::cout << d << std::endl;
+		d.decrementGrade();
+		std::cout << d << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

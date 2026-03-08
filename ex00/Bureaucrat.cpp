@@ -11,11 +11,11 @@ Bureaucrat::Bureaucrat(std::string name, int grade) :
 	_name(name),
 	_grade(grade)
 {
-	std::cout << "Bureaucrat " << _name << " parametrized constructor called" << std::endl;
 	if (_grade < 1)
 		throw GradeTooHighException();
 	if (_grade > 150)
 		throw GradeTooLowException();
+	std::cout << "Bureaucrat " << _name << " parametrized constructor called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) :
