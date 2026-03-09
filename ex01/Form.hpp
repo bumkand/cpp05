@@ -5,8 +5,7 @@
 #include <exception>
 #include "Bureaucrat.hpp"
 
-
-class Form : public Bureaucrat
+class Form
 {
     private:
         const std::string   _name;
@@ -16,13 +15,17 @@ class Form : public Bureaucrat
     
     public:
         Form();
-        Form()
+        Form(std::string name, int signgrade, int exegrade);
+		Form(const Form& other);
+		~Form();
+
     
         const std::string getName(void) const;
+		bool getSigned(void) const;
         const int getSignGrade(void) const;
         const int getExeGrade(void) const;
 
-        void beSigned(Bureaucrat*);
+        void beSigned(Bureaucrat &bureaucrat);
 
         class GradeTooHighException : std::exception
         {

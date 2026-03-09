@@ -4,6 +4,7 @@
 #include <iostream>
 //#include <bits/stdc++.h>
 #include <exception>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -34,6 +35,8 @@ class Bureaucrat
 			public:
 				const char* what() const throw();
 		};
+
+		void signForm(Form);
 };
 
 std::ostream &operator<<(std::ostream &out, const Bureaucrat& other);
