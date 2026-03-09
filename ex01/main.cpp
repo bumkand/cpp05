@@ -52,4 +52,16 @@ int	main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+
+	try
+	{
+		Form	a("Taxes", 50, 20);
+		Bureaucrat	j("Jojo", 10);
+
+		j.signForm(a);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }
