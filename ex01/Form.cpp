@@ -20,7 +20,7 @@ Form::Form(std::string name, int signgrade, int exegrade) :
 		throw GradeTooHighException();
 	if (signgrade > 150 || exegrade > 150)
 		throw GradeTooLowException();
-	std::cout << "Form parametrized constructor called" << std::endl;
+	std::cout << "Form " << _name << " parametrized constructor called" << std::endl;
 }
 
 Form::Form(const Form& other) :
@@ -69,7 +69,10 @@ const char* Form::GradeTooLowException::what() const throw()
 
 std::ostream& operator<<(std::ostream& out, const Form& other)
 {
-	out << "Form " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: " << other.getSigned();
+	if (other.getSigned() == 1)
+		out << "Form " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: True" << other.getSigned();
+	else
+		out << "Form " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: False" << other.getSigned();
 	return out;
 }
 
@@ -78,6 +81,6 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() <= getSignGrade())
 		_signed = true;
 	else
-		throw GradeTooLowException();
+		throw Form::GradeTooLowException();
 }
 
