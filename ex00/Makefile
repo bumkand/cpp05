@@ -1,4 +1,4 @@
-NAME = Polymorphism
+NAME = Bureaucrat
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
 CXX = c++
 
