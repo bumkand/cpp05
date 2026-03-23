@@ -67,6 +67,11 @@ const char* AForm::GradeTooLowException::what() const throw()
 	return "Grade is too low";
 }
 
+const char* AForm::DocumentNotSigned::what() const throw()
+{
+	return "Document is not signed";
+}
+
 std::ostream& operator<<(std::ostream& out, const AForm& other)
 {
 	if (other.getSigned() == 1)
