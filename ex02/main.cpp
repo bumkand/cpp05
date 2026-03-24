@@ -1,14 +1,17 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main(void)
 {
 	AForm	*form1 = new ShrubberyCreationForm("Shrubb1");
-	AForm	*form2 = new ShrubberyCreationForm("Shrubb2");
+	AForm	*form2 = new RobotomyRequestForm("Robot1");
 	AForm	*form3 = new ShrubberyCreationForm("Shrubb3");
 	Bureaucrat	j("Pankrac", 130);
-	Bureaucrat	k("Servac", 140);
+	Bureaucrat	k("Servac", 45);
 	Bureaucrat	l("Bonifac", 150);
+	
+	srand(time(0));
 
 	std::cout << std::endl;
 	try
@@ -25,7 +28,7 @@ int	main(void)
 	try
 	{
 		k.signForm(*form2);
-		form2->execute(k);
+		k.executeForm(*form2);
 	}
 	catch (std::exception &e)
 	{
