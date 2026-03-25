@@ -41,7 +41,7 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "Bureaucrat " << _name << " destructor called" << std::endl;
 }
 
-std::string const Bureaucrat::getName(void) const
+const std::string& Bureaucrat::getName(void) const
 {
 	return _name;
 }

@@ -37,7 +37,7 @@ AForm::~AForm()
 	//std::cout << "AForm destructor called" << std::endl;
 }
 
-const std::string AForm::getName(void) const
+const std::string& AForm::getName(void) const
 {
 	return _name;
 }
@@ -75,9 +75,9 @@ const char* AForm::DocumentNotSigned::what() const throw()
 std::ostream& operator<<(std::ostream& out, const AForm& other)
 {
 	if (other.getSigned() == 1)
-		out << "AForm " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: True" << other.getSigned();
+		out << "AForm " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: True";
 	else
-		out << "AForm " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: False" << other.getSigned();
+		out << "AForm " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: False";
 	return out;
 }
 

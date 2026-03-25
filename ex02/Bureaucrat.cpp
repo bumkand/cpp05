@@ -25,23 +25,23 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) :
 	//std::cout << "Bureaucrat copy constructor called" << std::endl;
 }
 
-//Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
-//{
-//	if (this != &other)
-//	{
-//		_name = other._name;
-//		_grade = other._grade;
-//	}
-//	std::cout << "Bureaucrat assigment operator called" << std::endl;
-//	return *this;
-//}
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+	if (this != &other)
+	{
+		//_name = other._name;
+		_grade = other._grade;
+	}
+	std::cout << "Bureaucrat assigment operator called" << std::endl;
+	return *this;
+}
 
 Bureaucrat::~Bureaucrat()
 {
 	//std::cout << "Bureaucrat " << _name << " destructor called" << std::endl;
 }
 
-std::string const Bureaucrat::getName(void) const
+const std::string& Bureaucrat::getName(void) const
 {
 	return _name;
 }
@@ -91,9 +91,9 @@ void Bureaucrat::signForm(AForm& aform)
 		aform.beSigned(*this);
 		std::cout << _name << " signed " << aform.getName() << std::endl;
 	}
-	catch (AForm& aform)
+	catch (std::exception &e)
 	{
-		std::cout << _name << " couldn't sign " << aform.getName() << " because sign grade is small " << aform.getSignGrade() << std::endl;
+		std::cout << _name << " couldn't sign " << aform.getName() << " because " << e.what() << std::endl;
 	}
 }
 

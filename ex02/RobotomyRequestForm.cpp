@@ -21,15 +21,15 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) :
 	//std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
-{
-	if (this != &other)
-	{
-		_target = other._target;
-	}
-	//std::cout << "RobotomyRequestForm assigment operator called" << std::endl;
-	return *this;
-}
+//RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
+//{
+//	if (this != &other)
+//	{
+//		_target = other._target;
+//	}
+//	//std::cout << "RobotomyRequestForm assigment operator called" << std::endl;
+//	return *this;
+//}
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
@@ -39,9 +39,9 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (getSigned() == false)
-		throw DocumentNotSigned();
+		throw AForm::DocumentNotSigned();
 	if (executor.getGrade() > getExeGrade())
-		throw GradeTooLowException();
+		throw AForm::GradeTooLowException();
 
 	std::cout << "* drilling noise *" << std::endl;
 	if ((rand() % 2) == 0)

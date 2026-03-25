@@ -37,7 +37,7 @@ Form::~Form()
 	std::cout << "Form destructor called" << std::endl;
 }
 
-const std::string Form::getName(void) const
+const std::string& Form::getName(void) const
 {
 	return _name;
 }
@@ -70,9 +70,9 @@ const char* Form::GradeTooLowException::what() const throw()
 std::ostream& operator<<(std::ostream& out, const Form& other)
 {
 	if (other.getSigned() == 1)
-		out << "Form " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: True" << other.getSigned();
+		out << "Form " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: True";
 	else
-		out << "Form " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: False" << other.getSigned();
+		out << "Form " << other.getName() << ", sign grade " << other.getSignGrade() << ", execute grade " << other.getExeGrade() << ", signed: False";
 	return out;
 }
 

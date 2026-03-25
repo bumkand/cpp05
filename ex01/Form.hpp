@@ -22,7 +22,7 @@ class Form
 		~Form();
 
     
-        const std::string getName(void) const;
+        const std::string& getName(void) const;
 		bool getSigned(void) const;
         int getSignGrade(void) const;
         int getExeGrade(void) const;

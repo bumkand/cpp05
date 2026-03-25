@@ -21,15 +21,15 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 	//std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
-{
-	if (this != &other)
-	{
-		_target = other._target;
-	}
-	//std::cout << "ShrubberyCreationForm assigment operator called" << std::endl;
-	return *this;
-}
+//ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+//{
+//	if (this != &other)
+//	{
+//		_target = other._target;
+//	}
+//	//std::cout << "ShrubberyCreationForm assigment operator called" << std::endl;
+//	return *this;
+//}
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
@@ -44,9 +44,9 @@ const char* ShrubberyCreationForm::FileIsClosed::what() const throw()
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (getSigned() == false)
-		throw DocumentNotSigned();
+		throw AForm::DocumentNotSigned();
 	if (executor.getGrade() > getExeGrade())
-		throw GradeTooLowException();
+		throw AForm::GradeTooLowException();
 
 	std::ofstream	file;
 	file.open((_target + "_shrubbery").c_str());
