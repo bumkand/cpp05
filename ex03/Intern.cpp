@@ -43,33 +43,38 @@ AForm* presidential(std::string target)
 
 AForm* Intern::makeForm(std::string name, std::string target)
 {
-	std::string	form[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	std::string	form[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	int			num = 0;
 
 	if (target == "")
 	{
-		std::cout << "Target is missing" << std::endl;
+		std::cerr << "Target is missing" << std::endl;
 		return NULL;
 	}
 	while (num < 3 && name != form[num])
 		num++;
 	
-	switch (num)
+	//switch (num)
+	//{
+	//	case 0:
+	//		return shrubbform(target);
+	//	case 1:
+	//		return robotomyform(target);
+	//	case 2:
+	//		return presidential(target);
+	//	default:
+	//	{
+	//		std::cerr << "This type of form doesn't exist" << std::endl;
+	//		return NULL;
+	//	}
+	//}
+
+	typedef AForm* (*AFormMemPtr)(std::string target);
+	AFormMemPtr	function[] = {&shrubbform, &robotomyform, &presidential};
+	if (num == 3)
 	{
-		case 0:
-			return shrubbform(target);
-		case 1:
-			return robotomyform(target);
-		case 2:
-			return presidential(target);
-		default:
-		{
-			std::cout << "This type of form doesn't exist" << std::endl;
-			return NULL;
-		}
+		std::cerr << "This type of form doesn't exist" << std::endl;
+		return NULL;
 	}
-
-	//std::string	function[3] = {"shrubbform", "robotomyform", "presidential"};
-
-	//return (*this)function[num](target);
+	return function[num](target);
 }

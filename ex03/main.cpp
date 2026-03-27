@@ -9,15 +9,38 @@ int	main(void)
 	srand(time(0));
 	Intern someRandomIntern;
 	AForm* rrf;
-	rrf = someRandomIntern.makeForm("shrubbery ", "Bender");
-	if (rrf == NULL)
-		return 1;
+	rrf = someRandomIntern.makeForm("presidential pardon", "");
+	if (rrf != NULL)
+	{
+		Bureaucrat	j("Pankrac", 10);
+		try
+		{
+			j.signForm(*rrf);
+			j.executeForm(*rrf);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
 
-	Bureaucrat	j("Pankrac", 10);
+		delete rrf;
+	}
 
-	j.signForm(*rrf);
-	j.executeForm(*rrf);
-
-	delete rrf;
+	rrf = someRandomIntern.makeForm("presidential pardon", "Alex");
+	if (rrf != NULL)
+	{
+		Bureaucrat	k("Servac", 5);
+		try
+		{
+			k.signForm(*rrf);
+			rrf->execute(k);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+		delete rrf;
+	}
+	
 	return 0;
 }
